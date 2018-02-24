@@ -12,6 +12,8 @@ const ique = (timeout = 1000) => {
 
     // put in idle time request
     request()
+
+    return instance
   }
 
   // request an idle callback if not already flushing queue
@@ -39,9 +41,11 @@ const ique = (timeout = 1000) => {
     if (tasks.length) request()
   }
 
-  return {
+  const instance = {
     add
   }
+
+  return instance
 }
 
 export default ique
