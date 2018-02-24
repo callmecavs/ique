@@ -7,17 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <script src="../dist/queue.js"></script>
+    <script src="../dist/ique.js"></script>
     <script>
       console.log('Module assigned to window.Ique. Logged below:')
       console.log(Ique)
 
       const instance = Ique()
 
-      instance.add({
-        func: x => console.log(x),
-        args: ['test']
-      })
+      for (let i = 0; i < 1000; i++) {
+        instance.add({
+          func: x => console.log(x),
+          args: ['test']
+        })
+      }
     </script>
   </body>
 </html>
