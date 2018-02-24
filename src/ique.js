@@ -1,7 +1,8 @@
 const ique = (timeout = 1000) => {
-  let id
+  if (!window.requestIdleCallback) throw new Error('ique: please polyfill window.requestIdleCallback.')
 
-  const tasks = []
+  let id
+  let tasks = []
 
   const add = task => {
     if (!task.func) throw new Error('ique: task object must have a func property.')
@@ -25,21 +26,17 @@ const ique = (timeout = 1000) => {
 
   // flush the queue
   const flush = deadline => {
-    let task
-
     // run tasks until running out of time or finished
-    while (deadline.timeRemaining() > 0 && tasks.length > 0) {
-      task = tasks.pop()
-      task.func.apply(null, task.args)
+    while (deadline.timeRemaining() > 0 && tasks.length) {
+      let { func, args } = tasks.pop()
+      func.apply(null, args)
     }
 
     // null out callback id
     id = null
 
     // if out of time before tasks are finished, request more time
-    if (tasks.length > 0) {
-      request()
-    }
+    if (tasks.length) request()
   }
 
   return {
