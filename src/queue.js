@@ -3,18 +3,25 @@ const queue = timeout => {
   let tasks = []
 
   const add = task => {
+    if (!task.func) {
+      throw new Error('idle-queue: task object must have a func property.')
+    }
+
+    // add task to queue
     tasks.push(task)
+
+    // put in idle time request
     request()
   }
 
+  // request an idle callback if not already flushing queue
   const request = () => {
-    // request an idle callback if not already in one
-    if (!callbackId) {
-      callbackId = window.requestIdleCallback(
-        flush,
-        { timeout: timeout || 1000 }
-      )
-    }
+    if (callbackId) return
+
+    callbackId = window.requestIdleCallback(
+      flush,
+      { timeout: timeout || 1000 }
+    )
   }
 
   const flush = deadline => {
@@ -29,8 +36,7 @@ const queue = timeout => {
     // null out callback id
     callbackId = null
 
-    // if running out of time before all tasks
-    // are finished, request more idle time
+    // if out of time before tasks are finished, request more time
     if (tasks.length > 0) {
       request()
     }
