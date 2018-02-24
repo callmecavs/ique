@@ -28,7 +28,7 @@ const config = {
     {
       file: info.main,
       format: 'umd',
-      name: 'queue'
+      name: 'IdleQueue'
     }, {
       file: info.module,
       format: 'es'
