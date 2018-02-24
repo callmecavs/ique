@@ -8,11 +8,13 @@ const queue = timeout => {
   }
 
   const request = () => {
-    // request an idle callback
-    callbackId = window.requestIdleCallback(
-      flush,
-      { timeout: timeout || 1000 }
-    )
+    // request an idle callback if not already in one
+    if (!callbackId) {
+      callbackId = window.requestIdleCallback(
+        flush,
+        { timeout: timeout || 1000 }
+      )
+    }
   }
 
   const flush = deadline => {
@@ -24,7 +26,11 @@ const queue = timeout => {
       task.func.apply(null, task.params)
     }
 
-    // if running out of time before all tasks are finished,
+    // null out callback id
+    callbackId = null
+
+    // if running out of time before all tasks
+    // are finished, request more idle time
     if (tasks.length > 0) {
       request()
     }
