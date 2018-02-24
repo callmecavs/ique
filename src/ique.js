@@ -1,5 +1,5 @@
 const ique = (timeout = 1000) => {
-  if (!window.requestIdleCallback) throw new Error('ique: please polyfill window.requestIdleCallback.')
+  if (!window.requestIdleCallback) throw new Error('ique: window.requestIdleCallback not found.')
 
   let id
   let tasks = []
