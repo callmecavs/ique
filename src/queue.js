@@ -3,9 +3,7 @@ const queue = timeout => {
   let tasks = []
 
   const add = task => {
-    if (!task.func) {
-      throw new Error('idle-queue: task object must have a func property.')
-    }
+    if (!task.func) throw new Error('idle-queue: task object must have a func property.')
 
     // add task to queue
     tasks.push(task)
