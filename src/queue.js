@@ -24,6 +24,7 @@ const queue = timeout => {
     )
   }
 
+  // flush the queue
   const flush = deadline => {
     let task
 
