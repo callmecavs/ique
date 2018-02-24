@@ -1,9 +1,6 @@
 const queue = timeout => {
   let callbackId
-
   let tasks = []
-  let tasksIndex = 0
-  let tasksLength = 0
 
   const add = task => {
     tasks.push(task)
@@ -11,20 +8,30 @@ const queue = timeout => {
   }
 
   const request = () => {
-    // if not already idle, request it
-    if (!callbackId) {
-      // use timeout option, defaulting to 1000 ms
-      window.requestIdleCallback(
-        handler,
-        { timeout: timeout || 1000 }
-      )
-    }
+    // request an idle callback
+    callbackId = window.requestIdleCallback(
+      flush,
+      { timeout: timeout || 1000 }
+    )
   }
 
   const flush = deadline => {
-    while (deadline.timeRemaining() > 0) {
+    let task
 
+    // run tasks until running out of time or finished
+    while (deadline.timeRemaining() > 0 && tasks.length > 0) {
+      task = tasks.pop()
+      task.func.apply(null, task.params)
     }
+
+    // if running out of time before all tasks are finished,
+    if (tasks.length > 0) {
+      request()
+    }
+  }
+
+  return {
+    add
   }
 }
 
