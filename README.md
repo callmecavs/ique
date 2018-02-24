@@ -25,6 +25,16 @@ for (let i = 0; i < 1000; i++) {
 }
 ```
 
+## Browser Support
+
+Requires [`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback), and as such supports the following:
+
+* Chrome 47+
+* Firefox 55+
+* Opera 34+
+
+Consider using this [shim](https://gist.github.com/paullewis/55efe5d6f05434a96c36) in unsupported browsers.
+
 ## License
 
 [MIT](https://opensource.org/licenses/MIT). © 2018 Michael Cavalea
