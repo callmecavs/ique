@@ -13,10 +13,11 @@
       console.log(IdleQueue)
 
       const instance = IdleQueue()
-        .add({
-          func: x => console.log(x),
-          params: ['test']
-        })
+
+      instance.add({
+        func: x => console.log(x),
+        params: ['test']
+      })
     </script>
   </body>
 </html>
