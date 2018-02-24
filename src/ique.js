@@ -1,6 +1,7 @@
-const ique = timeout => {
-  let callbackId
-  let tasks = []
+const ique = (timeout = 1000) => {
+  let id
+
+  const tasks = []
 
   const add = task => {
     if (!task.func) throw new Error('ique: task object must have a func property.')
@@ -14,11 +15,11 @@ const ique = timeout => {
 
   // request an idle callback if not already flushing queue
   const request = () => {
-    if (callbackId) return
+    if (id) return
 
-    callbackId = window.requestIdleCallback(
+    id = window.requestIdleCallback(
       flush,
-      { timeout: timeout || 1000 }
+      { timeout }
     )
   }
 
@@ -33,7 +34,7 @@ const ique = timeout => {
     }
 
     // null out callback id
-    callbackId = null
+    id = null
 
     // if out of time before tasks are finished, request more time
     if (tasks.length > 0) {
