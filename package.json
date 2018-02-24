@@ -1,6 +1,6 @@
 {
   "name":        "ique",
-  "description": "",
+  "description": "A queue that runs tasks when the browser is idle.",
 
   "main":        "dist/ique.js",
   "module":      "dist/ique.module.js",

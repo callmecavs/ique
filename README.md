@@ -2,6 +2,8 @@
 
 [![ique on NPM](https://img.shields.io/npm/v/ique.svg?style=flat-square)](https://www.npmjs.com/package/ique) [![ique Downloads on NPM](https://img.shields.io/npm/dm/ique.svg?style=flat-square)](https://www.npmjs.com/package/ique) [![Standard JavaScript Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 
+A queue that runs tasks when the browser is idle.
+
 ## Install
 
 ```sh
@@ -14,6 +16,7 @@ $ npm install ique --save
 import ique from 'ique'
 
 // create a queue, passing a timeout (default shown)
+// more on timeouts here: https://goo.gl/4jLPWz
 const queue = ique(1000)
 
 // add tasks to it, to be flushed automatically when the browser is idle
