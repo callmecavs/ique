@@ -1,9 +1,9 @@
-const queue = timeout => {
+const ique = timeout => {
   let callbackId
   let tasks = []
 
   const add = task => {
-    if (!task.func) throw new Error('idle-queue: task object must have a func property.')
+    if (!task.func) throw new Error('ique: task object must have a func property.')
 
     // add task to queue
     tasks.push(task)
@@ -29,7 +29,7 @@ const queue = timeout => {
     // run tasks until running out of time or finished
     while (deadline.timeRemaining() > 0 && tasks.length > 0) {
       task = tasks.pop()
-      task.func.apply(null, task.params)
+      task.func.apply(null, task.args)
     }
 
     // null out callback id
@@ -46,4 +46,4 @@ const queue = timeout => {
   }
 }
 
-export default queue
+export default ique

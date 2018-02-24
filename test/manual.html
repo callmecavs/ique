@@ -9,14 +9,14 @@
   <body>
     <script src="../dist/queue.js"></script>
     <script>
-      console.log('Module assigned to window.IdleQueue. Logged below:')
-      console.log(IdleQueue)
+      console.log('Module assigned to window.Ique. Logged below:')
+      console.log(Ique)
 
-      const instance = IdleQueue()
+      const instance = Ique()
 
       instance.add({
         func: x => console.log(x),
-        params: ['test']
+        args: ['test']
       })
     </script>
   </body>

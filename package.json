@@ -1,10 +1,10 @@
 {
-  "name":        "queue",
+  "name":        "ique",
   "description": "",
 
-  "main":        "dist/queue.js",
-  "module":      "dist/queue.module.js",
-  "jsnext:main": "dist/queue.module.js",
+  "main":        "dist/ique.js",
+  "module":      "dist/ique.module.js",
+  "jsnext:main": "dist/ique.module.js",
 
   "version": "0.0.1",
   "license": "",

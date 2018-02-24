@@ -4,7 +4,7 @@ import resolve from 'rollup-plugin-node-resolve'
 const info = require('./package.json')
 
 const config = {
-  input: 'src/queue.js',
+  input: 'src/ique.js',
   plugins: [
     resolve(),
     babel({
@@ -28,7 +28,7 @@ const config = {
     {
       file: info.main,
       format: 'umd',
-      name: 'IdleQueue'
+      name: 'Ique'
     }, {
       file: info.module,
       format: 'es'
