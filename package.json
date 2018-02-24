@@ -7,14 +7,14 @@
   "jsnext:main": "dist/ique.module.js",
 
   "version": "0.0.1",
-  "license": "",
+  "license": "MIT",
 
-  "repository": "",
+  "repository": "callmecavs/ique",
 
   "author": {
-    "name":  "",
-    "email": "",
-    "url":   ""
+    "name":  "Michael Cavalea",
+    "email": "callmecavs@gmail.com",
+    "url":   "http://callmecavs.com/"
   },
 
   "scripts": {
