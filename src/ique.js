@@ -30,7 +30,7 @@ const ique = (timeout = 1000) => {
   const flush = deadline => {
     // run tasks until running out of time or finished
     while (deadline.timeRemaining() > 0 && tasks.length) {
-      let { func, args } = tasks.pop()
+      let { func, args } = tasks.shift()
       func.apply(null, args)
     }
 
