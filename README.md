@@ -19,7 +19,7 @@ import ique from 'ique'
 // more on timeouts here: https://goo.gl/4jLPWz
 const queue = ique(1000)
 
-// add tasks to it, to be flushed automatically when the browser is idle
+// add tasks to it, which will be run automatically when the browser is idle
 for (let i = 0; i < 1000; i++) {
   queue.add({
     func: x => console.log(x),
