@@ -26,6 +26,17 @@ for (let i = 0; i < 1000; i++) {
     args: ['test']
   })
 }
+
+// constructor and add can be chained if useful
+const priorityQueue = ique(100)
+  .add({
+    func: x => console.log(x),
+    args: [0]
+  })
+  .add({
+    func: y => console.log(y),
+    args: [1]
+  })
 ```
 
 ## Browser Support
