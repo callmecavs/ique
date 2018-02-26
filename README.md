@@ -27,7 +27,7 @@ for (let i = 0; i < 1000; i++) {
   })
 }
 
-// constructor and add can be chained if useful
+// constructor and add can be chained
 const priorityQueue = ique(100)
   .add({
     func: x => console.log(x),
